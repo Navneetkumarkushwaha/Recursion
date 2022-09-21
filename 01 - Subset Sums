@@ -1,0 +1,14 @@
+class Solution:
+    def solve(self,i,ds,arr):
+        if i == len(arr):
+            self.result.append(sum(ds[:]))
+            return
+        ds.append(arr[i])
+        self.solve(i+1,ds,arr)
+        ds.pop()
+        self.solve(i+1,ds,arr)
+    def subsetSums(self, arr, N):
+        arr.sort()
+        self.result = []
+        self.solve(0,[],arr)
+        return self.result
