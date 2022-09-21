@@ -1,0 +1,18 @@
+class Solution:
+    def subsetsWithDup(self, nums: List[int]) -> List[List[int]]:
+        nums.sort()
+        ans = []
+        def solve(i,ds):
+            if i >= len(nums):
+                if ds not in ans:
+                    ans.append(ds[:])
+                return
+            ds.append(nums[i])
+            solve(i+1,ds)
+            ds.pop()
+            solve(i+1,ds)
+        
+        solve(0,[])
+        return ans
+        
+        
